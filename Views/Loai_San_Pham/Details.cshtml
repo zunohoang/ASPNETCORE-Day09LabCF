@@ -1,0 +1,61 @@
+@model Day09LabCF.Models.Loai_San_Pham
+@{
+    ViewData["Title"] = "Thông tin chi ti?t lo?i s?n ph?m";
+}
+
+<h1 class="mb-4 text-primary fw-bold text-uppercase">
+    <i class="fa-solid fa-circle-info me-2"></i> @ViewData["Title"]
+</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-lg border-0">
+            <div class="card-header bg-info text-white fw-semibold">
+                <i class="fa-solid fa-info-circle me-2"></i> Chi ti?t lo?i s?n ph?m
+            </div>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4 text-end text-secondary fw-semibold">
+                        @Html.DisplayNameFor(model => model.MaLoai)
+                    </dt>
+                    <dd class="col-sm-8">
+                        <span class="fw-bold text-dark">@Html.DisplayFor(model => model.MaLoai)</span>
+                    </dd>
+
+                    <dt class="col-sm-4 text-end text-secondary fw-semibold">
+                        @Html.DisplayNameFor(model => model.TenLoai)
+                    </dt>
+                    <dd class="col-sm-8">
+                        <span class="fw-bold text-dark">@Html.DisplayFor(model => model.TenLoai)</span>
+                    </dd>
+
+                    <dt class="col-sm-4 text-end text-secondary fw-semibold">
+                        @Html.DisplayNameFor(model => model.TrangThai)
+                    </dt>
+                    <dd class="col-sm-8">
+                        @if (Model.TrangThai)
+                        {
+                            <span class="badge bg-success px-3 py-2">
+                                <i class="fa-solid fa-check-circle me-1"></i> Ho?t ð?ng
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger px-3 py-2">
+                                <i class="fa-solid fa-xmark-circle me-1"></i> Ng?ng ho?t ð?ng
+                            </span>
+                        }
+                    </dd>
+                </dl>
+            </div>
+            <div class="card-footer bg-light d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="fa-solid fa-arrow-left me-1"></i> Quay l?i
+                </a>
+                <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">
+                    <i class="fa-solid fa-pen-to-square me-1"></i> Ch?nh s?a
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

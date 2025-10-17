@@ -1,0 +1,64 @@
+@model Day09LabCF.Models.Loai_San_Pham
+@{
+    ViewData["Title"] = "Thêm m?i lo?i s?n ph?m";
+}
+
+<h1 class="mb-4 text-primary fw-bold text-uppercase">
+    <i class="fa-solid fa-plus-circle me-2"></i> @ViewData["Title"]
+</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-lg border-0">
+            <div class="card-header bg-primary text-white fw-semibold">
+                <i class="fa-solid fa-pen-to-square me-2"></i> Nh?p thông tin lo?i s?n ph?m
+            </div>
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="MaLoai" class="form-label fw-semibold"></label>
+                        <input asp-for="MaLoai" class="form-control" placeholder="Nh?p m? lo?i s?n ph?m..." />
+                        <span asp-validation-for="MaLoai" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="TenLoai" class="form-label fw-semibold"></label>
+                        <input asp-for="TenLoai" class="form-control" placeholder="Nh?p tên lo?i s?n ph?m..." />
+                        <span asp-validation-for="TenLoai" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold d-block">Tr?ng thái</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" asp-for="TrangThai" value="true" checked />
+                            <label class="form-check-label text-success fw-semibold">
+                                <i class="fa-solid fa-circle-check me-1"></i> Ho?t ð?ng
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" asp-for="TrangThai" value="false" />
+                            <label class="form-check-label text-danger fw-semibold">
+                                <i class="fa-solid fa-circle-xmark me-1"></i> Ng?ng ho?t ð?ng
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="fa-solid fa-arrow-left me-1"></i> Quay l?i
+                        </a>
+                        <button type="submit" class="btn btn-success">
+                            <i class="fa-solid fa-floppy-disk me-1"></i> Lýu
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
